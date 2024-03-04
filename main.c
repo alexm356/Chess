@@ -4,7 +4,7 @@
 //void move();
 void print_board(int gameboard[9][9]);
 int game_setup();
-void getMove();
+void getMove(char *fromChar, int *fromInt, char *toChar, int *toInt);
 int turnOrder(int playerColor);
 
 void swap(int *a, int *b);
@@ -15,6 +15,9 @@ int main(){
     int white, black;
     int playerColor;
     int player1, player2;
+
+    char fromaChar, toaChar;
+    int fromaInt, toaInt;
 
     int turnCounter; //variable to control which turn it is
 
@@ -33,40 +36,42 @@ int main(){
 
     active = turnOrder(playerColor);
 
-    if (active == 1){
+    int num; // change 
+
+    while (active == 1){
 
             print_board(board);
 
-            printf("Player %d, where would you like to move? \n", active);
+            printf("Where would you like to move? ");
+              scanf("%c", &fromaChar);
 
-            getMove();
+            printf("%c", fromaChar);
+            //getMove(&fromaChar, &fromaInt, &toaChar, &toaInt);
+            active = scanf("%d", &num);
+            
         
-    }else if (active == 0){
+    }if (active == 0){
 
         printf("no game today!");
-
+        
     }else { 
         printf("what is going on!");
+        
     }
 }
 
-void getMove(){
 
-    char fromChar;
-    int fromInt;
-
-    char toChar;
-    int toInt;
+/*void getMove(char *fromChar, int *fromInt, char *toChar, int *toInt){
 
     //EXAMPLE B2 - D2 - pawn moved
-    printf("What would you like to move?");
-    scanf("%c %d", &fromChar, &fromInt);
-
-    printf("Your move is: %c %d\n", fromChar, fromInt);
+    printf("Your move is: %c%d\n", *fromChar, *fromInt);
     
+
+    //*toChar, *toInt
     //translateCoordinates
 
 }
+*/
 
 /*
 
@@ -121,7 +126,8 @@ void print_board(int gameboard[9][9]){
     printf( "       1    2    3    4    5    6    7    8 \n");
     printf("     ----------------------------------------");
 
-    for(int i = 0; i < 8; i++){
+    for(int i = 0; i < 8; i++)
+    {
         
         printf("\n");
 
